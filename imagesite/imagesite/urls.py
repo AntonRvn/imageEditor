@@ -1,6 +1,11 @@
-from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from django.urls import get_resolver
+
+# Вывод всех маршрутов при запуске сервера
+#for pattern in get_resolver().url_patterns:
+#    print(pattern)
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("api/users/", include("users.urls")),
 ]

@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .serializers import UserRegisterSerializer
+from django.contrib.auth import get_user_model
 
-from django.http import HttpResponse
+User = get_user_model()
 
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserRegisterSerializer
